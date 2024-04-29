@@ -1,0 +1,9 @@
+Many Vendors Provide C++ Compilers, Including The Free Software Foundation, LLVM,
+Microsoft, Intel, Embarcadero, Oracle, And IBM.
+C++ Is A High-level, General-purpose Programming Language Created By Danish Computer
+Scientist Bjarne Stroustrup.
+It Is Almost Always Implemented In A Compiled Language.
+Modern C++ Currently Has Object-oriented, Generic, And Functional Features, In Addition
+To Facilities For Low-level Memory Manipulation.
+First Released In 1985 As An Extension Of The C Programming Language, It Has Since
+Expanded Significantly Over Time.

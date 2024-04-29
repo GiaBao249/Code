@@ -1,0 +1,54 @@
+Tong cot :
+Cot 1:81030
+Cot 2:72679
+Cot 3:116799
+Cot 4:88802
+Cot 5:79940
+Tong dong :
+Dong 1:81030
+Dong 2:153709
+Dong 3:270508
+Dong 4:359310
+Dong 5:439250
+Max of row 1: 29162 Min of row 1: 4627
+Max of row 2: 19625 Min of row 2: 7517
+Max of row 3: 31420 Min of row 3: 17436
+Max of row 4: 32762 Min of row 4: 1057
+Max of row 5: 22768 Min of row 5: 10990
+Max of col 1: 30719 Min of col 1: 4627
+Max of col 2: 25185 Min of col 2: 14830
+Max of col 3: 29162 Min of col 3: 1057
+Max of col 4: 32762 Min of col 4: 14289
+Max of col 5: 31420 Min of col 5: 7581
+Max cua matrix :32762, Min cua matrix :1057
+Sort tang dan :
+1057
+4627
+7517
+7581
+7641
+10990
+12611
+13918
+14289
+14830
+16073
+16623
+17330
+17436
+17498
+17921
+19625
+22768
+24830
+24837
+25185
+29162
+30719
+31420
+32762
+Tong tren duong cheo chinh : 
+85251
+Tong tren duong cheo phu : 
+67404
+Co tong cong 4 so nguyen to
