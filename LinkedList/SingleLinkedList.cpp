@@ -1,4 +1,4 @@
-#include <bits/stdc++.h>
+#include <iostream>
 using namespace std;
 
 // Kieu node
@@ -154,170 +154,170 @@ void Erase(node *&head, int k)
 
 //----------------------------------------------------------------//
 // Tao ngăn xếp bằng array
-st[10001] int n = 0;
+// st[10001] int n = 0;
 
-void pushArray(int x)
-{
-	stack[n] = x;
-	++n;
-}
+// void pushArray(int x)
+// {
+// 	stack[n] = x;
+// 	++n;
+// }
 
-void PopArray()
-{
-	if (n >= 1)
-	{
-		--n;
-	}
-}
+// void PopArray()
+// {
+// 	if (n >= 1)
+// 	{
+// 		--n;
+// 	}
+// }
 
-void TopArray()
-{
-	if (n == 0)
-		return;
-	return stack[n - 1];
-}
+// void TopArray()
+// {
+// 	if (n == 0)
+// 		return;
+// 	return stack[n - 1];
+// }
 
-void sizeArray()
-{
-	return n;
-}
+// void sizeArray()
+// {
+// 	return n;
+// }
 
-//-------------------------------------------------------------------------------
-// Tạo ngăn xếp bằng LiskedList
+// //-------------------------------------------------------------------------------
+// // Tạo ngăn xếp bằng LiskedList
 
-struct node
-{
-	int data;
-	node *next;
-};
+// struct node
+// {
+// 	int data;
+// 	node *next;
+// };
 
-node *makeNode(int data)
-{
-	node *newNode = new node();
-	newNode->data = x;
-	newNode->next = NULL;
+// node *makeNode(int data)
+// {
+// 	node *newNode = new node();
+// 	newNode->data = x;
+// 	newNode->next = NULL;
 
-	return newNode;
-}
+// 	return newNode;
+// }
 
-void PushLK(node *&top, int data)
-{
-	node *newNode = makeNode(data);
-	if (top == NULL)
-	{
-		top = newNode;
-		return;
-	}
-	newNode->next = top;
-	top = newNode;
-}
+// void PushLK(node *&top, int data)
+// {
+// 	node *newNode = makeNode(data);
+// 	if (top == NULL)
+// 	{
+// 		top = newNode;
+// 		return;
+// 	}
+// 	newNode->next = top;
+// 	top = newNode;
+// }
 
-void PopLK(node *&top)
-{
-	if (top != NULL)
-	{
-		node *temp = top;
-		top = temp->next;
-		delete temp;
-	}
-}
+// void PopLK(node *&top)
+// {
+// 	if (top != NULL)
+// 	{
+// 		node *temp = top;
+// 		top = temp->next;
+// 		delete temp;
+// 	}
+// }
 
-void TopLK(node *&top)
-{
-	if (top != NULL)
-		return top->data;
-}
+// void TopLK(node *&top)
+// {
+// 	if (top != NULL)
+// 		return top->data;
+// }
 
-int sizeLK(node *&top)
-{
-	int ans = 0;
-	while (top != NULL)
-	{
-		++ans;
-		top = top->next;
-	}
-	return ans;
-}
+// int sizeLK(node *&top)
+// {
+// 	int ans = 0;
+// 	while (top != NULL)
+// 	{
+// 		++ans;
+// 		top = top->next;
+// 	}
+// 	return ans;
+// }
 
 // Queue trong Linkedlist
 // Push : them mot phan tu O cuoi hang doi
 // Pop : xoa 1 phan tu o dau hang doi
 
-struct node
-{
-	int data;
-	node *next;
-};
+// struct node
+// {
+// 	int data;
+// 	node *next;
+// };
 
-node makeNode(int x)
-{
-	node *newNode = new node();
-	newNode->data = x;
-	newNode->next = NULL;
-	return newNode;
-}
+// node makeNode(int x)
+// {
+// 	node *newNode = new node();
+// 	newNode->data = x;
+// 	newNode->next = NULL;
+// 	return newNode;
+// }
 
-void PushQueue(node *&queue, int x)
-{
-	node *newNode = makeNode(x);
-	if (queue == NULL)
-	{
-		queue = newNode;
-	}
-	else
-	{
-		node *temp = queue;
-		whie(temp->next != NULL)
-		{
-			temp = temp->next;
-		}
-		temp->next = newNode;
-	}
-}
+// void PushQueue(node *&queue, int x)
+// {
+// 	node *newNode = makeNode(x);
+// 	if (queue == NULL)
+// 	{
+// 		queue = newNode;
+// 	}
+// 	else
+// 	{
+// 		node *temp = queue;
+// 		whie(temp->next != NULL)
+// 		{
+// 			temp = temp->next;
+// 		}
+// 		temp->next = newNode;
+// 	}
+// }
 
-void PopQueue(node *&queue)
-{
-	if (queqe == NULL)
-		return;
-	else
-	{
-		node *temp = queue;
-		queue = queue->next;
-		delete temp;
-	}
-}
+// void PopQueue(node *&queue)
+// {
+// 	if (queue == NULL)
+// 		return;
+// 	else
+// 	{
+// 		node *temp = queue;
+// 		queue = queue->next;
+// 		delete temp;
+// 	}
+// }
 
-int size(node *&queue)
-{
-	if (queue == NULL)
-		return 0;
-	else
-	{
-		int ans = 0;
-		while (queue != NULL)
-		{
-			++ans;
-			queue = queue->next;
-		}
-	}
-	return ans;
-}
+// int size(node *&queue)
+// {
+// 	if (queue == NULL)
+// 		return 0;
+// 	else
+// 	{
+// 		int ans = 0;
+// 		while (queue != NULL)
+// 		{
+// 			++ans;
+// 			queue = queue->next;
+// 		}
+// 	}
+// 	return ans;
+// }
 
-bool isEmpty(node *&queue)
-{
-	return queue == NULL;
-}
+// bool isEmpty(node *&queue)
+// {
+// 	return queue == NULL;
+// }
 
-int front(node *&queue)
-{
-	return queue->data;
-}
+// int front(node *&queue)
+// {
+// 	return queue->data;
+// }
 
-void DuyetNode(node *&queue)
-{
-	while (queue != NULL)
-	{
-		cout << queue->data << ' ';
-		queue = queue->next;
-	}
-}
+// void DuyetNode(node *&queue)
+// {
+// 	while (queue != NULL)
+// 	{
+// 		cout << queue->data << ' ';
+// 		queue = queue->next;
+// 	}
+// }
