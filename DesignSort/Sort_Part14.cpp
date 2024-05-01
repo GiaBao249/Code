@@ -6,7 +6,7 @@ void Try(int a[], int n)
     int res = INT_MAX;
     for (int i = 0; i < n; i++)
         cin >> a[i];
-    sort(a, a + n); // 1 3 6
+    sort(a, a + n);
     for (int i = n - 1; i > 0; i--)
     {
         int sum = a[i] - a[i - 1];
