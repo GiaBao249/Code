@@ -18,7 +18,7 @@ ListNode *mergeTwoLists(ListNode *list1, ListNode *list2)
     ListNode *ptr = list1;
     if (list1->val > list2->val)
     {
-        temp = list2;
+        ptr = list2;
         list2 = list2->next;
     }
     else

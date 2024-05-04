@@ -27,7 +27,7 @@ void backtracking(int index, int curCount, int h, int m)
             if (curCount == EXPECTED_COUNT && h < 12 && m < 60)
             {
                 string time = to_string(h) + ":" + (m < 10 ? "0" + to_string(m) : to_string(m));
-                this->results.push_back(time);
+                // this->results.push_back(time);
             }
         }
         else
@@ -41,5 +41,5 @@ vector<string> readBinaryWatch(int turnedOn)
 {
     EXPECTED_COUNT = turnedOn;
     backtracking(0, 0, 0, 0);
-    return this->results;
+    // return this->results;
 }
