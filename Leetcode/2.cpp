@@ -29,3 +29,25 @@ ListNode *addTwoNumbers(ListNode *head1, ListNode *head2)
     }
     return res->next;
 }
+int main()
+{
+    // Create first list
+    ListNode *head1 = new ListNode(4);
+    head1->next = new ListNode(5);
+    head1->next->next = new ListNode(6);
+
+    // Create second list
+    ListNode *head2 = new ListNode(6);
+    head2->next = new ListNode(3);
+    head2->next->next = new ListNode(4);
+
+    // Add the two numbers and print the result
+    ListNode *result = addTwoNumbers(head1, head2);
+    while (result != NULL)
+    {
+        std::cout << result->val << " ";
+        result = result->next;
+    }
+
+    return 0;
+}

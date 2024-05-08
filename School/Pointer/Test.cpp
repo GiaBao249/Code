@@ -1,6 +1,6 @@
 #include <iostream>
 #include <string>
-
+using namespace std;
 // Định nghĩa cấu trúc cho một Node trong danh sách liên kết
 struct Student
 {
