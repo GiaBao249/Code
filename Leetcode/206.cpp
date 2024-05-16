@@ -1,3 +1,4 @@
+#include <bits/stdc++.h>
 using namespace std;
 
 struct ListNode
@@ -19,16 +20,16 @@ ListNode reverseList(ListNode *&head)
     return head;
 }
 // De quy
-ListNode reverseList(ListNode *&head)
+ListNode ReverseList(ListNode *&head)
 {
     // THCS
     if (head == nullptr)
-        return null;
+        return nullptr;
     ListNode *nextNode = head->next;
-    if (nextNode == null)
+    if (nextNode == nullptr)
         return nextNode;
     // THTQ
-    ListNode *newHead = reverseList(nextNode);
+    ListNode *newHead = ReverseList(nextNode);
     nextNode->next = head;
     head->next = NULL;
 }

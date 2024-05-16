@@ -78,24 +78,6 @@ int main()
             }
         }
     }
-    // for (int i = 0; i < n; ++i)
-    // {
-    //     for (int j = 0; j < n; ++j)
-    //     {
-    //         cout << dp1[i][j] << " ";
-    //     }
-    //     cout << endl;
-    // }
-
-    // for (int i = 0; i < n; ++i)
-    // {
-    //     for (int j = 0; j < n; ++j)
-    //     {
-    //         cout << dp2[i][j] << " ";
-    //     }
-    //     cout << endl;
-    // }
-
     int width = bottom_right.second - top_left.second + 1;
     int height = bottom_right.first - top_left.first + 1;
 

@@ -16,7 +16,7 @@ void moveZeroes(vector<int> &nums)
          current++;
       }
    }
-   for (; current < n; i++)
+   for (; current < n; current++)
    {
       nums[current] = 0;
    }

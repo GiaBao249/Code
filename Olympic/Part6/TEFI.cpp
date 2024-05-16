@@ -1,82 +1,50 @@
 #include <iostream>
-#include <fstream>
-#include <vector>
-
 using namespace std;
-
-// Hàm đếm số lượng kí tự T, E, F, I trong bảng
-void count_TEFIGrid(vector<vector<int>> &grid, int n, int m, int &count_T, int &count_E, int &count_F, int &count_I)
+string s1, s2;
+int c = 1;
+int b[1002], n, m;
+int a[4] = {0, 0, 0, 0};
+void Count()
 {
-    count_T = count_E = count_F = count_I = 0;
-
-    // Đếm theo hàng
-    for (int i = 0; i < n; ++i)
+    s2 = '0' + s2 + '0';
+    int l = m + 2;
+    for (int i = 1; i < l; i++)
     {
-        for (int j = 0; j < m - 2; ++j)
-        {
-            if (grid[i][j] == 1 && grid[i][j + 1] == 1 && grid[i][j + 2] == 1)
-            {
-                if (j == 0 || grid[i][j - 1] == 0)
-                {
-                    count_T++;
-                }
-                else if (grid[i][j + 3] == 0)
-                {
-                    count_E++;
-                }
-            }
+        if (s1[i] == '1' && s1[i + 1] == '1' && s2[i] == '1') // thêm đường gạch ngang
+            b[i]++;
+        if (s1[i - 1] == '0' && s1[i] == '1' && s1[i + 1] == '0' && s2[i] == '0')
+        { // kết thúc I, T, F
+            b[i]++;
+            a[b[i]]++;
+            b[i] == 0;
         }
-    }
-
-    // Đếm theo cột
-    for (int j = 0; j < m; ++j)
-    {
-        for (int i = 0; i < n - 2; ++i)
-        {
-            if (grid[i][j] == 1 && grid[i + 1][j] == 1 && grid[i + 2][j] == 1)
-            {
-                if (i == 0 || grid[i - 1][j] == 0)
-                {
-                    count_F++;
-                }
-                else if (grid[i + 3][j] == 0)
-                {
-                    count_I++;
-                }
-            }
+        if (s1[i] == '1' && s1[i + 1] == '1' && s2[i] == '0' && b[i] > 0)
+        { // kết thúc chữ E;
+            a[4]++;
+            b[i] = 0;
         }
     }
 }
 int main()
 {
-    ifstream input("TEFI.inp");
-    ofstream output("TEFI.out");
-
-    int n, m;
-    input >> n >> m;
-
-    // Đọc dữ liệu từ file input
-    vector<vector<int>> grid(n, vector<int>(m));
-    for (int i = 0; i < n; ++i)
+    freopen("TEFI.inp", "r", stdin);
+    freopen("TEFI.out", "w", stdout);
+    cin >> n >> m >> s1;
+    for (int i = 0; i < m; i++)
+        b[i] = 0;
+    s1 = '0' + s1 + '0';
+    int i = 0;
+    while (i < n)
     {
-        for (int j = 0; j < m; ++j)
-        {
-            input >> grid[i][j];
-        }
+        cin >> s2;
+        Count();
+        s1 = s2;
+        i++;
     }
-
-    int count_T, count_E, count_F, count_I;
-    // Đếm số lượng ký tự T, E, F, I trong bảng
-    count_TEFIGrid(grid, n, m, count_T, count_E, count_F, count_I);
-
-    // Ghi kết quả vào file output
-    output << "T " << count_T << endl;
-    output << "E " << count_E << endl;
-    output << "F " << count_F << endl;
-    output << "I " << count_I << endl;
-
-    input.close();
-    output.close();
-
+    s2 = "";
+    for (int i = 0; i < m + 2; i++)
+        s2 = s2 + '0';
+    Count();
+    cout << "T= " << a[2] << "\nE= " << a[4] << "\nF= " << a[3] << "\nI= " << a[1];
     return 0;
 }
