@@ -20,7 +20,7 @@ void insertionSort(vector<int> &a)
 
 int main()
 {
-    vector<int> v = {1, 5, 2, 4, 9};
+    vector<int> v = {50, 61, 24, 13, 73, 99, 51, 2};
     insertionSort(v);
     for (auto x : v)
         cout << x << " ";

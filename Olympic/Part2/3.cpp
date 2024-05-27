@@ -23,5 +23,6 @@ int Try(int i)
 int main()
 {
     cin >> n >> m;
+    memset(X, 0, sizeof(X));
     Try(1);
 }

@@ -6,12 +6,12 @@ int X[100];
 
 int Try(int i)
 {
-    for (int j = X[i - 1] + 1; j < n + m; j++)
+    for (int j = X[i - 1]; j <= n; j++)
     {
         X[i] = j;
         if (i == m)
         {
-            for (int l = 1; l <= n; l++)
+            for (int l = 1; l <= m; l++)
                 cout << X[l];
             cout << endl;
         }
@@ -23,5 +23,7 @@ int Try(int i)
 int main()
 {
     cin >> n >> m;
+    for (int i = 0; i < 100; i++)
+        X[i] = 1;
     Try(1);
 }
