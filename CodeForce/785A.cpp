@@ -1,0 +1,40 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+int main()
+{
+    int n;
+    cin >> n;
+    int sum = 0;
+    while (n--)
+    {
+        string s;
+        cin >> s;
+        if (s == "Tetrahedron")
+            sum += 4;
+        else if (s == "Cube")
+            sum += 6;
+        else if (s == "Octahedron")
+            sum += 8;
+        else if (s == "Dodecahedron")
+            sum += 12;
+        else if (s == "Icosahedron")
+            sum += 20;
+    }
+    cout << sum << endl;
+}
+
+int Solve()
+{
+    int n;
+    cin >> n;
+    int sum = 0;
+    unordered_map<char, int> mp = {{'I', 20}, {'T', 4}, {'C', 6}, {'D', 12}, {'O', 8}};
+    while (n--)
+    {
+        string s;
+        cin >> s;
+        sum += mp[s[0]];
+    }
+    cout << sum << endl;
+}
