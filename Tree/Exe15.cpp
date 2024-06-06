@@ -39,7 +39,7 @@ int Try(Tree *root)
 {
     if (root == NULL)
         return 0;
-    if (!root->left || !root->right)
+    if (!root->left && !root->right)
         return 1;
     return Try(root->left) + Try(root->right);
 }

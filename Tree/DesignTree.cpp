@@ -204,11 +204,11 @@ int Count(Node *root)
 }
 
 //! Độ cao của cây
-int Weight(Node *root)
+int Height(Node *root)
 {
     if (root == NULL)
         return -1;
-    return max(Weight(root->left) + 1, Weight(root->right) + 1);
+    return max(Height(root->left) + 1, Height(root->right) + 1);
 }
 
 //! Check full binarySeach Tree
