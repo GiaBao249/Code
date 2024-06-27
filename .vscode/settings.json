@@ -74,7 +74,25 @@
     "ranges": "cpp",
     "span": "cpp",
     "stacktrace": "cpp",
-    "queue": "cpp"
-  },
-  "cSpell.words": ["Không"]
+    "queue": "cpp",
+    "stack": "cpp",
+    "any": "cpp",
+    "barrier": "cpp",
+    "bit": "cpp",
+    "charconv": "cpp",
+    "compare": "cpp",
+    "concepts": "cpp",
+    "coroutine": "cpp",
+    "expected": "cpp",
+    "optional": "cpp",
+    "source_location": "cpp",
+    "latch": "cpp",
+    "numbers": "cpp",
+    "semaphore": "cpp",
+    "spanstream": "cpp",
+    "stdfloat": "cpp",
+    "stop_token": "cpp",
+    "syncstream": "cpp",
+    "variant": "cpp"
+  }
 }
