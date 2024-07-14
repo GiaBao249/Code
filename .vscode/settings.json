@@ -95,5 +95,8 @@
     "syncstream": "cpp",
     "variant": "cpp",
     "climits": "cpp"
-  }
+  },
+  "cSpell.words": [
+    "MAXN"
+  ]
 }
