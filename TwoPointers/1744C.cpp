@@ -8,13 +8,31 @@ using namespace std;
 #define endl '\n'
 #define inf INT_MAX
 #define maxn
-/*
- /\_/\
-(= ._.)
-/ >  \>
-*/
 void Solve()
 {
+    int n;
+    char c;
+    string s;
+    cin >> n >> c >> s;
+    vector<int> pos;
+    f0(i, n) if (s[i] == 'g') pos.push_back(i);
+
+    int j = 0;
+    int m = pos.size();
+    int res = -inf;
+    f0(i, n)
+    {
+        if (s[i] == c)
+        {
+            while (j < m && pos[j] < i)
+                j++;
+            if (j < m)
+                res = max(res, pos[j] - i);
+            else
+                res = max(res, n - i + pos[0]);
+        }
+    }
+    cout << res << endl;
 }
 int main()
 {
@@ -29,5 +47,6 @@ int main()
     cin >> t;
     while (t--)
         Solve();
+    cerr << "Time elapsed : " << 1.0 * clock() / CLOCKS_PER_SEC << " sec \n";
     return 0;
 }

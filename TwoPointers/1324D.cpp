@@ -8,13 +8,30 @@ using namespace std;
 #define endl '\n'
 #define inf INT_MAX
 #define maxn
-/*
- /\_/\
-(= ._.)
-/ >  \>
-*/
 void Solve()
 {
+    int n;
+    cin >> n;
+    vector<int> a(n), b(n), c(n);
+    f0(i, n) cin >> a[i];
+    f0(i, n) cin >> b[i];
+
+    f0(i, n) c[i] = a[i] - b[i];
+
+    sort(all(c));
+    int l = 0, r = n - 1;
+    ll res = 0;
+    while (l < r)
+    {
+        if (c[l] + c[r] > 0)
+        {
+            res += (r - l);
+            r--;
+        }
+        else
+            l++;
+    }
+    cout << res << endl;
 }
 int main()
 {
@@ -25,9 +42,7 @@ int main()
         freopen("input.txt", "r", stdin);
         freopen("output.txt", "w", stdout);
     }
-    int t;
-    cin >> t;
-    while (t--)
-        Solve();
+
+    Solve();
     return 0;
 }

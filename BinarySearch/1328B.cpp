@@ -7,15 +7,34 @@ using namespace std;
 #define rall(x) (x).rbegin(), (x).rend()
 #define endl '\n'
 #define inf INT_MAX
-#define maxn
-/*
- /\_/\
-(= ._.)
-/ >  \>
-*/
+
 void Solve()
 {
+    ll n, k;
+    cin >> n >> k;
+    string s = string(n, 'a');
+
+    ll l = 1, r = n - 1, i1 = -1;
+    while (l <= r)
+    {
+        ll mid = (l + r) / 2;
+        if ((mid * (mid + 1)) / 2 >= k)
+        {
+            i1 = mid;
+            r = mid - 1;
+        }
+        else
+            l = mid + 1;
+    }
+
+    ll i2 = k - (i1 * (i1 - 1)) / 2;
+
+    s[n - i1 - 1] = 'b';
+    s[n - i2] = 'b';
+
+    cout << s << endl;
 }
+
 int main()
 {
     ios_base::sync_with_stdio(false);

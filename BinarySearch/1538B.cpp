@@ -8,13 +8,22 @@ using namespace std;
 #define endl '\n'
 #define inf INT_MAX
 #define maxn
-/*
- /\_/\
-(= ._.)
-/ >  \>
-*/
+
 void Solve()
 {
+    int n, l, r;
+    cin >> n >> l >> r;
+    vector<int> a(n);
+    f0(i, n) cin >> a[i];
+    sort(all(a));
+    ll cnt = 0;
+    f0(i, n - 1)
+    {
+        auto left = lower_bound(a.begin() + i + 1, a.end(), l - a[i]);
+        auto right = upper_bound(a.begin() + i + 1, a.end(), r - a[i]);
+        cnt += right - left;
+    }
+    cout << cnt << endl;
 }
 int main()
 {
