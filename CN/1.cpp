@@ -60,7 +60,6 @@ void Solve()
             pos = i;
 
         int idx = Bs(pos);
-
         cout << idx << " ";
 
         update(idx, -1);

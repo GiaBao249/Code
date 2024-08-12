@@ -8,12 +8,9 @@ using namespace std;
 #define sz(x) (int)x.size()
 #define endl '\n'
 #define inf INT_MAX
+#define pb(x) push_back(x)
 const int maxn = 200005;
-/*
- /\_/\
-(= >_<)
-/ >  \>
-*/
+
 vector<int> bit(maxn);
 int n, k;
 
@@ -47,26 +44,36 @@ int Bs(int k)
 
 void Solve()
 {
-    ll k;
     cin >> n >> k;
-    k++;
-    f1(i, n) update(i, 1);
+    vector<int> a(n), res;
+    f0(i, n) cin >> a[i];
+    vector<int> cc(all(a));
+    sort(all(cc));
+    cc.erase(unique(all(cc)), cc.end());
 
-    int pos = 0;
-    for (int i = n; i >= 1; i--)
+    bit.resize(sz(cc) + 1, 0);
+    f0(i, k - 1)
     {
-        pos = (pos + k) % i;
-        if (pos == 0)
-            pos = i;
+        int it = lower_bound(all(cc), a[i]) - cc.begin() + 1;
+        update(it, 1);
+    }
 
-        int idx = Bs(pos);
+    for (int i = k - 1; i < n; i++)
+    {
+        int it = lower_bound(all(cc), a[i]) - cc.begin() + 1;
+        update(it, 1);
 
-        cout << idx << " ";
-
-        update(idx, -1);
-        pos--;
+        int mid = (k + 1) / 2;
+        int x = Bs(mid);
+        cout << cc[x - 1] << ' ';
+        if (i - k + 1 >= 0)
+        {
+            it = lower_bound(all(cc), a[i - k + 1]) - cc.begin() + 1;
+            update(it, -1);
+        }
     }
 }
+
 int main()
 {
     ios_base::sync_with_stdio(false);
