@@ -3,7 +3,7 @@ using namespace std;
 #define ll long long
 #define f0(i, n) for (int i = 0; i < n; i++)
 #define f1(i, n) for (int i = 1; i <= n; i++)
-#define For(i, a, b) for (int i = a; i < b; i++)
+#define FOR(i, a, b) for (int i = a; i < b; i++)
 #define all(x) (x).begin(), (x).end()
 #define rall(x) (x).rbegin(), (x).rend()
 #define sz(x) (int)x.size()
@@ -18,6 +18,21 @@ const int MOD = 1e9 + 7;
 */
 void Solve()
 {
+    int n, x;
+    cin >> n >> x;
+    vector<ll> a(n), dp(x + 1, 0);
+    f0(i, n) cin >> a[i];
+    dp[0] = 1;
+
+    for (auto u : a)
+    {
+        for (int i = u; i <= x; i++)
+        {
+            dp[i] += dp[i - u];
+            dp[i] %= MOD;
+        }
+    }
+    cout << dp[x] << endl;
 }
 int main()
 {
@@ -28,9 +43,6 @@ int main()
         freopen("Task.inp", "r", stdin);
         freopen("Task.out", "w", stdout);
     }
-    int t;
-    cin >> t;
-    while (t--)
-        Solve();
+    Solve();
     return 0;
 }

@@ -9,15 +9,30 @@ using namespace std;
 #define sz(x) (int)x.size()
 #define endl '\n'
 #define inf INT_MAX
-const int maxn = 0;
+const int maxn = 1e6 + 5;
 const int MOD = 1e9 + 7;
 /*
  /\_/\
 (= >_<)
 / >  \>
 */
+
+ll dp[2][maxn];
+
 void Solve()
 {
+    for (int i = 1; i <= maxn; i++)
+    {
+        if (i == 1)
+        {
+            dp[0][i] = dp[1][i] = 1;
+        }
+        else
+        {
+            dp[0][i] = (dp[0][i - 1] * 2 + dp[1][i - 1]) % MOD;
+            dp[1][i] = (dp[0][i - 1] + 4 * dp[1][i - 1]) % MOD;
+        }
+    }
 }
 int main()
 {
@@ -28,9 +43,14 @@ int main()
         freopen("Task.inp", "r", stdin);
         freopen("Task.out", "w", stdout);
     }
+    Solve();
     int t;
     cin >> t;
     while (t--)
-        Solve();
+    {
+        int n;
+        cin >> n;
+        cout << (dp[0][n] + dp[1][n]) % MOD << endl;
+    }
     return 0;
 }
