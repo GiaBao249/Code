@@ -14,7 +14,7 @@ using pii = pair<ll, ll>;
 #define sz(x) (ll) x.size()
 #define el '\n'
 #define inf INT_MAX
-const ll N = 200005;
+const ll N = 0;
 const ll MOD = 1e9 + 7;
 
 void file()
@@ -25,31 +25,24 @@ void file()
         freopen("Task.out", "w", stdout);
     }
 }
-
-bool check(const char *s)
+void Solve()
 {
-    for (int i = 0; s[i] != '\0'; i++)
+    int n;
+    string s;
+    cin >> n >> s;
+    for (int i = 0; i < n; i++)
     {
-        if (!isdigit(s[i]))
+        if (n % (i + 1) == 0)
         {
-            return true;
+            reverse(s.begin(), s.begin() + (i + 1));
         }
     }
-    return false;
+    cout << s << el;
 }
-
-int main(int d, char const *a[])
+int main()
 {
-    cin >> d;
-    vector<int> v;
-    int n = atoi(a[1]);
-    for (int i = 2; i <= n; i++)
-    {
-        if (i < d && !check(a[i]))
-            v.pb(atoi(a[i]));
-    }
-    sort(all(v));
-    for (auto x : v)
-        cout << x << el;
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
+    Solve();
     return 0;
 }

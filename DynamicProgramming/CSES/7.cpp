@@ -9,37 +9,57 @@ using namespace std;
 #define sz(x) (int)x.size()
 #define endl '\n'
 #define inf INT_MAX
-const int maxn = 2e5 + 5;
+const int maxn = 0;
 const int MOD = 1e9 + 7;
 /*
  /\_/\
 (= >_<)
 / >  \>
 */
-vector<vector<ll>> dp;
 void Solve()
 {
-    string s , t;
-    cin >> s >> t;
-    dp.resize(2,vector<ll>(2 * sz(s) , 0));
-    int n = sz(s);
-    if(s[0] == 'X')
-        dp[0][0] = 1;
-    if(t[0] == 'X')
-        dp[1][0] = 1;
-    for(int i = 1 ; i < n ; i++)
+    int n, k;
+    cin >> n >> k;
+    vector<ll> a(n);
+    f0(i, n) cin >> a[i];
+    vector<vector<ll>> dp(n + 1, vector<ll>(k + 1, 0));
+    // Xác Định nếu tại a[i] = 0 và a[i] = k
+    For(i, 1, k + 1)
     {
-        if(s[i] == 'X')
-            dp[0][i] = (dp[0][i - 1] + dp[1][i - 1]) % MOD;
-        if(t[i] == 'X')
-            dp[1][i] = (dp[0][i - 1] + dp[1][i - 1]) % MOD;
+        if (a[0] == 0 || a[0] == i)
+            dp[1][i] = 1;
     }
-    cout << ((dp[0][n - 1] + dp[1][n - 1]) % MOD) << endl;
+    For(i, 2, n + 1)
+    {
+        For(j, 1, k + 1)
+        {
+            if (a[i - 1] != 0 && a[i - 1] != j)
+            {
+                dp[i][j] = 0;
+                continue;
+            }
+            for (int x = j - 1; x <= j + 1; x++)
+            {
+                if (x < 1 || x > k)
+                    continue;
+                dp[i][j] = (dp[i][j] + dp[i - 1][x]) % MOD;
+            }
+        }
+    }
+    int res = 0;
+    For(i, 1, k + 1)
+        res = (res + dp[n][i]) % MOD;
+    cout << res << endl;
 }
 int main()
 {
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
+    if (fopen("Task.inp", "r"))
+    {
+        freopen("Task.inp", "r", stdin);
+        freopen("Task.out", "w", stdout);
+    }
     Solve();
     return 0;
 }
