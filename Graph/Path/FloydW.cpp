@@ -13,44 +13,59 @@ using pii = pair<ll,ll>;
 #define rall(x) (x).rbegin(), (x).rend()
 #define sz(x) (ll)x.size()
 #define el '\n'
-#define inf INT_MAX
-const ll N = 200005;
+#define inf 2000000000000000000;
+const ll N = 505;
 const ll MOD = 1e9 + 7;
-
-#include<ext/pb_ds/assoc_container.hpp>
-using namespace __gnu_pbds;
-typedef tree<int , null_type , less<int> ,
-rb_tree_tag ,tree_order_statistics_node_update>indexed_set;
-
-
-void file()
-{
+ 
+void file() {
     if (fopen("Task.inp", "r")) {
         freopen("Task.inp", "r", stdin);
         freopen("Task.out", "w", stdout);
     }
 }
-void Solve()
-{
-    int n , k ;
-    cin >> n >> k;
-    indexed_set s;
+const ll oo = 2000000000000000000;
+ll n, m ,q;
+ll a[N][N];
+void Solve() {
+    cin >> n >> m >> q;
     f1(i , n){
-        s.insert(i);
+        f1(j , n){
+            a[i][j] = oo;
+        }
     }
-    int pos = 0;
-    for(int i = n ; i >= 1; i--){
-        pos = (pos + k) % i;
-        auto x = s.find_by_order(pos);
-        cout << *x << ' ';
-        s.erase(x);
+
+    f1 (i , n){
+        a[i][i] = 0;
+    }
+    
+    f1(i , m){
+        ll u , v , w;
+        cin >> u >> v >> w; 
+        a[u][v] = a[v][u] = min(w , a[u][v]);
+    }
+    f1(k , n){
+        f1(u , n){
+            f1(v, n){
+                a[u][v] = min(a[u][v] , a[u][k] + a[k][v]);
+            }
+        }
+    }
+    f1(i , q){
+        ll x , y;
+        cin >> x >> y;
+        if(a[x][y] == oo){
+            cout << -1 << el;
+        }
+        else{
+            cout << a[x][y] << el;
+        }
     }
 }
-int main()
-{
+ 
+int main() {
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
+    //file();
     Solve();
     return 0;
 }
-

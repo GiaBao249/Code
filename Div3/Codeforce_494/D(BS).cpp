@@ -1,4 +1,4 @@
-/// Ever try ever failed no matter , try again fail again fail better!
+// Ever try ever failed no matter , try again fail again fail better!
 #include <bits/stdc++.h>
 using namespace std;
 #define ll long long
@@ -26,44 +26,60 @@ void file()
     }
 }
 
+ll bs(ll u, ll v, ll k)
+{
+    ll l = 1, r = k, m = 0;
+    while (l <= r)
+    {
+        ll mid = (l + r) >> 1;
+        if (u - mid * v >= 0)
+        {
+            m = mid;
+            l = mid + 1;
+        }
+        else
+            r = mid - 1;
+    }
+    return m;
+}
 void Solve()
 {
-    int n, k;
-    cin >> n >> k;
-    vector<ll> a;
-    for (int i = 9; i >= 2; i--)
+    ll n, q;
+    cin >> n >> q;
+    vector<ll> a(n);
+    set<ll, greater<ll>> se;
+    unordered_map<ll, ll> mp;
+    f0(i, n)
     {
-        while (n % i == 0 && sz(a) < k)
+        cin >> a[i];
+        mp[a[i]]++;
+        se.insert(a[i]);
+    }
+    while (q--)
+    {
+        ll u, ans = 0;
+        cin >> u;
+        for (auto v : se)
         {
-            a.pb(i);
-            n /= i;
+            if (v > u)
+                continue;
+            ll idx = bs(u, v, mp[v]);
+            u -= (idx * v);
+            ans += idx;
         }
-    }
-    if (n > 1 && sz(a) < k)
-    {
-        a.pb(n);
-    }
-    while (sz(a) < k)
-    {
-        a.pb(1);
-    }
-    sort(all(a));
-    for (auto x : a)
-    {
-        if (x > 9)
-        {
+        if (u != 0)
             cout << -1;
-            return;
-        }
+        else
+            cout << ans;
+        cout << el;
     }
-    for (auto x : a)
-        cout << x;
-    cout << el;
 }
+
 int main()
 {
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
+    file();
     Solve();
     return 0;
 }

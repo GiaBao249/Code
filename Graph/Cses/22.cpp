@@ -14,7 +14,7 @@ using pii = pair<ll, ll>;
 #define sz(x) (ll) x.size()
 #define el '\n'
 #define inf INT_MAX
-const ll N = 0;
+const ll N = 2e5 + 10;
 const ll MOD = 1e9 + 7;
 
 void file()
@@ -25,45 +25,75 @@ void file()
         freopen("Task.out", "w", stdout);
     }
 }
+ll n, m;
+ll par[N], siz[N];
 
+struct Edge
+{
+    ll u, v, w;
+};
+vector<Edge> a;
+ll get(ll v)
+{
+    return v == par[v] ? v : par[v] = get(par[v]);
+}
+
+void unite(ll a, ll b)
+{
+    a = get(a);
+    b = get(b);
+    if (a == b)
+        return;
+    if (siz[a] < siz[b])
+        swap(a, b);
+    par[b] = a;
+    siz[a] += siz[b];
+}
+
+bool Cycle(ll u, ll v)
+{
+    return get(u) == get(v);
+}
+bool cmp(Edge &a, Edge &b)
+{
+    return a.w < b.w;
+}
 void Solve()
 {
-    int n, k;
-    cin >> n >> k;
-    vector<ll> a;
-    for (int i = 9; i >= 2; i--)
+    cin >> n >> m;
+    ll cnt = 0;
+    f1(i, m)
     {
-        while (n % i == 0 && sz(a) < k)
+        ll u, v, w;
+        cin >> u >> v >> w;
+        a.pb({u, v, w});
+    }
+    f1(i, n)
+    {
+        par[i] = i;
+        siz[i] = 1;
+    }
+    sort(all(a), cmp);
+    int t = 0;
+    for (auto e : a)
+    {
+        if (!Cycle(e.u, e.v))
         {
-            a.pb(i);
-            n /= i;
+            unite(e.u, e.v);
+            cnt += e.w;
+            t++;
         }
     }
-    if (n > 1 && sz(a) < k)
-    {
-        a.pb(n);
-    }
-    while (sz(a) < k)
-    {
-        a.pb(1);
-    }
-    sort(all(a));
-    for (auto x : a)
-    {
-        if (x > 9)
-        {
-            cout << -1;
-            return;
-        }
-    }
-    for (auto x : a)
-        cout << x;
-    cout << el;
+    if (t == n - 1)
+        cout << cnt << el;
+    else
+        cout << "IMPOSSIBLE";
 }
 int main()
 {
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
+    file();
     Solve();
     return 0;
 }

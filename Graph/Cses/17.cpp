@@ -14,8 +14,7 @@ using pii = pair<ll, ll>;
 #define sz(x) (ll) x.size()
 #define el '\n'
 #define inf INT_MAX
-#define time cerr << "Time elapsed: " << 1.0 * clock() / CLOCKS_PER_SEC << " s.\n";
-const ll N = 2e5 + 5;
+const ll N = 2e5 + 10;
 const ll MOD = 1e9 + 7;
 
 void file()
@@ -26,53 +25,43 @@ void file()
         freopen("Task.out", "w", stdout);
     }
 }
-ll n, k;
-ll a[N], b[N];
-pii get(ll lb)
+
+int n, m;
+vector<int> a[N];
+int vis[N], dp[N];
+void dfs(int u)
 {
-    ll op = 0, s = 0;
-    f0(i, n)
+    vis[u] = 1;
+    for (auto v : a[u])
     {
-        ll d = max(a[i] - lb, 0LL);
-        ll f = (d / b[i]) + (a[i] >= lb);
-        op += f;
-        s += (f * a[i] - (f * (f - 1) / 2) * b[i]);
+        if (!vis[v])
+        {
+            dfs(v);
+        }
+        dp[u] = (dp[u] + dp[v]) % MOD;
     }
-    if (op > k)
-    {
-        s -= (op - k) * lb;
-    }
-    return {op, s};
 }
 void Solve()
 {
-    cin >> n >> k;
-    f0(i, n) cin >> a[i];
-    f0(i, n) cin >> b[i];
-    ll l = 0, r = inf;
-    while (r - l > 1)
+    cin >> n >> m;
+    f1(i, m)
     {
-        ll mid = (l + r) >> 1;
-        if (get(mid).first >= k)
-        {
-            l = mid;
-        }
-        else
-        {
-            r = mid;
-        }
+        int u, v;
+        cin >> u >> v;
+        a[u].pb(v);
     }
-    cout << get(l).second << el;
+    CLR(vis, 0);
+    dp[n] = 1;
+    dfs(1);
+    cout << dp[1] << el;
+    // f1(i, n) cout << dp[i] << el;
 }
-signed main()
+
+int main()
 {
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
     file();
-    ll t;
-    cin >> t;
-    while (t--)
-        Solve();
-    time;
+    Solve();
     return 0;
 }

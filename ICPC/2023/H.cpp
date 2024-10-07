@@ -14,43 +14,45 @@ using pii = pair<ll,ll>;
 #define sz(x) (ll)x.size()
 #define el '\n'
 #define inf INT_MAX
-const ll N = 200005;
+const ll N = 2e5 + 10;
 const ll MOD = 1e9 + 7;
+vector<int> st ;
+vector<bool> is_st;
 
-#include<ext/pb_ds/assoc_container.hpp>
-using namespace __gnu_pbds;
-typedef tree<int , null_type , less<int> ,
-rb_tree_tag ,tree_order_statistics_node_update>indexed_set;
-
-
-void file()
-{
-    if (fopen("Task.inp", "r")) {
-        freopen("Task.inp", "r", stdin);
-        freopen("Task.out", "w", stdout);
+vector<ll> Div(ll n) {
+    vector<ll> div;
+    for(ll i = 1; i * i <= n; i++) {
+        if(n % i == 0) {
+            div.pb(i);
+            if(i * i != n) {
+                div.pb(n / i);
+            }
+        }
     }
+    sort(all(div));
+    return div;
 }
-void Solve()
-{
-    int n , k ;
-    cin >> n >> k;
-    indexed_set s;
-    f1(i , n){
-        s.insert(i);
+
+void Solve() {
+    ll a, b, c, d;
+    cin >> a >> b >> c >> d;
+    
+    vector<ll> DivC = Div(c);
+    ll ans = -1;
+    for(ll x : DivC) {
+        if(x % a == 0 && x % b != 0 && d % x != 0) {
+            if(ans == -1 || x < ans) {
+                ans = x;
+            }
+        }
     }
-    int pos = 0;
-    for(int i = n ; i >= 1; i--){
-        pos = (pos + k) % i;
-        auto x = s.find_by_order(pos);
-        cout << *x << ' ';
-        s.erase(x);
-    }
+    
+    cout << ans << el;
 }
-int main()
-{
+int main() {
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
+    //file();
     Solve();
     return 0;
 }
-
