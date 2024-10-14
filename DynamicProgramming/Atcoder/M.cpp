@@ -24,15 +24,35 @@ void file() {
         freopen("Task.out", "w", stdout);
     }
 }
-
+int n , k;
+ll dp[N] , a[N] , f[N];
 void Solve() {
-    
+    cin >> n >> k;
+    f1(i , n) cin >> a[i];
+    dp[0] = 1;
+    f1(i , n){
+        deque<pii> dq;
+        f0(j , k + 1){
+            while(sz(dq) && j - dq.front().first > a[i]){
+                f[i] = (f[i] - dq.front().second + MOD) % MOD;
+                dq.pop_front();
+            }
+            f[i] = (f[i] + dp[j]) % MOD;
+            dq.pb({j , dp[j]});
+            dp[j] = f[i];
+            cout << i << ' ' << f[i] << el; 
+        }
+        for(int x = 0 ; x <= k ; x++)
+            cout << x << ' ' << dp[x] << ' ';
+        cout << el;
+    }
+    cout << dp[k] << el;
 }
 
 int main() {
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
-    //file();
+    file();
     Solve();
     return 0;
 }

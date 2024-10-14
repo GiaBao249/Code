@@ -1,4 +1,5 @@
-//Ever try ever failed no matter , try again fail again fail better!
+///Ever try ever failed no matter , try again fail again fail better!
+// Quy hoạch động giúp ta nhìn thấy sự ngu dốt chứ k phải giúp chúng ta nhìn solution
 #include <bits/stdc++.h>
 using namespace std;
 #define ll long long
@@ -14,7 +15,7 @@ using pii = pair<ll,ll>;
 #define sz(x) (ll)x.size()
 #define el '\n'
 #define MAX INT_MAX
-const ll N = 2e5 + 10;
+const ll N = 105;
 const ll MOD = 1e9 + 7;
 const ll inf = 1e18;
 
@@ -24,15 +25,24 @@ void file() {
         freopen("Task.out", "w", stdout);
     }
 }
-
+ll dp[100005];
+vector<pii> a(N);
 void Solve() {
-    
+    int n , x;
+    cin >> n >> x;
+    f1(i , n) cin >> a[i].first >> a[i].second;
+    f1(i , n){
+        for(int j = x ; j >= a[i].first ; j--){
+            dp[j] = max(dp[j - a[i].first] + a[i].second ,dp[j]);
+        }
+    }
+    cout << dp[x];
 }
 
 int main() {
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
-    //file();
+    file();
     Solve();
     return 0;
 }

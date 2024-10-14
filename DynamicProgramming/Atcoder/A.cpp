@@ -1,4 +1,5 @@
-//Ever try ever failed no matter , try again fail again fail better!
+///Ever try ever failed no matter , try again fail again fail better!
+// Quy hoạch động giúp ta nhìn thấy sự ngu dốt chứ k phải giúp chúng ta nhìn solution
 #include <bits/stdc++.h>
 using namespace std;
 #define ll long long
@@ -24,15 +25,22 @@ void file() {
         freopen("Task.out", "w", stdout);
     }
 }
-
+ll f[N] ,a[N];
 void Solve() {
-    
+    int n ; cin >> n;
+    f1(i , n) cin >> a[i];
+    f[1] = 0;
+    f[2] = abs(a[2] - a[1]);
+    for(int i = 3 ; i <= n; i++){
+        f[i] = min(f[i - 1] + abs(a[i] - a[i - 1]), f[i - 2] + abs(a[i] - a[i - 2]));
+    }
+    cout << f[n] << el;
 }
 
 int main() {
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
-    //file();
+    file();
     Solve();
     return 0;
 }
