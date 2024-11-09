@@ -6,7 +6,7 @@ using namespace std;
 #define For(i, a, b) for (ll i = a; i < b; i++)
 #define all(x) (x).begin(), (x).end()
 #define rall(x) (x).rbegin(), (x).rend()
-#define sz(x) (int)x.size()
+#define sz(x) (ll)x.size()
 #define el '\n'
 #define inf 1e18
 const ll maxn = 200005;
@@ -115,7 +115,7 @@ void Solve()
         }
     }
 }
-int main()
+ll main()
 {
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
